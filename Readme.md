@@ -10,7 +10,7 @@ Não me responsabilizo perdas financeiras com o uso do mesmo.
 
 ## Instalação:
 
-Instale o java 18 ou 17 e rode ./gradlew run 
+Instale o java 17, ou superior e rode ./gradlew run 
 
 ## Configuração para trade:
 
