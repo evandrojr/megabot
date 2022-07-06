@@ -1,0 +1,30 @@
+Start price: 40.449,70 End price: 29.427,40
+Asset: USD: 67.126,67
+Period = 2022-04-22 00:00:00 to 2022-05-22 00:00:00
+*************************************** STATS ***************************************
+Start asset:                                                                61.057,53
+Strategy asset:                                                             67.126,67
+Strategy gain ratio:                                                            1,10x
+Strategy profit:                                                                9,94%
+
+Hold asset:                                                                 50.063,89
+Hold gain ratio:                                                                0,82x
+Hold profit:                                                                  -18,01%
+
+(Strategy / Hold) gain ratio:                                                   1,34x
+(Strategy vs Hold) profit:                                                     34,08%
+
+Crypto start price:                                                         40.449,70
+Crypto end price:                                                           29.427,40
+Crypto price variation:                                                       -27,25%
+
+Evaluations:                                                                    86400
+Period:                                    2022-04-22 00:00:00 to 2022-05-22 00:00:00
+Total sells: 36, buys: 36, total transactions 72
+DengoStrategy(profitToSell=0.01, profitToBuy=0.03, trade=Trade(buys=36, sells=36))
+Simulation total time 8206
+winnerStrategy: DengoStrategy(profitToSell=0.01, profitToBuy=0.03, trade=Trade(buys=36, sells=36)) winnerAssetRatio: 1.3408201399607353 Total time: 8206
+Average assetStrategyHoldRatio 0.9990932587763541
+Median assetStrategyHoldRatio 1.0
+Worst assetStrategyHoldRatio 0.913565331548354
+Best assetStrategyHoldRatio 1.3408201399607353

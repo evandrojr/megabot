@@ -1,0 +1,410 @@
+{
+	"info": {
+		"_postman_id": "5d2011d5-e92e-43dc-9325-c571165dd5ab",
+		"name": "Kraken REST API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Balance",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "e11ed019-722d-4ecf-8ddf-1f724e5b1ab4",
+						"exec": [
+							"api_key = \"Nosz8dniQf/O2Nb9eX86ZMRGnjnmlG0M4VOReJE7wP8CPq7AmD8SycH1\";",
+							"api_secret = CryptoJS.enc.Base64.parse(\"WomYIF1MoPo1K7yMIGzTyEPb9LZk+aB84TXKrUNbQzWkxgJF0DCRceYL+ijxW30izLmXIsFd10d/SR2HQMB57Q==\");",
+							"api_nonce = (Date.now() * 1000).toString();",
+							"api_endpoint = \"/0/private/Balance\";",
+							"api_post = \"nonce=\" + api_nonce;",
+							"",
+							"api_sha256 = CryptoJS.SHA256(api_nonce + api_post);",
+							"api_sign = CryptoJS.algo.HMAC.create(CryptoJS.algo.SHA512, api_secret);",
+							"api_sign.update(api_endpoint, api_secret);",
+							"api_sign.update(api_sha256, api_secret);",
+							"api_sign = api_sign.finalize().toString(CryptoJS.enc.Base64);",
+							"",
+							"pm.globals.set(\"api_nonce\", api_nonce);",
+							"pm.globals.set(\"api_key\", api_key);",
+							"pm.globals.set(\"api_signature\", api_sign);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "API-Key",
+						"value": "{{api_key}}",
+						"type": "text"
+					},
+					{
+						"key": "API-Sign",
+						"value": "{{api_signature}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nonce",
+							"value": "{{api_nonce}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.kraken.com/0/private/Balance",
+					"protocol": "https",
+					"host": [
+						"api",
+						"kraken",
+						"com"
+					],
+					"path": [
+						"0",
+						"private",
+						"Balance"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TradeBalance",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "e11ed019-722d-4ecf-8ddf-1f724e5b1ab4",
+						"exec": [
+							"api_key = \"Nosz8dniQf/O2Nb9eX86ZMRGnjnmlG0M4VOReJE7wP8CPq7AmD8SycH1\";",
+							"api_secret = CryptoJS.enc.Base64.parse(\"WomYIF1MoPo1K7yMIGzTyEPb9LZk+aB84TXKrUNbQzWkxgJF0DCRceYL+ijxW30izLmXIsFd10d/SR2HQMB57Q==\");",
+							"api_nonce = (Date.now() * 1000).toString();",
+							"api_endpoint = \"/0/private/TradeBalance\";",
+							"api_post = \"nonce=\" + api_nonce + \"&asset=xdg\";",
+							"",
+							"api_sha256 = CryptoJS.SHA256(api_nonce + api_post);",
+							"api_sign = CryptoJS.algo.HMAC.create(CryptoJS.algo.SHA512, api_secret);",
+							"api_sign.update(api_endpoint, api_secret);",
+							"api_sign.update(api_sha256, api_secret);",
+							"api_sign = api_sign.finalize().toString(CryptoJS.enc.Base64);",
+							"",
+							"pm.globals.set(\"api_nonce\", api_nonce);",
+							"pm.globals.set(\"api_key\", api_key);",
+							"pm.globals.set(\"api_signature\", api_sign);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "API-Key",
+						"type": "text",
+						"value": "{{api_key}}"
+					},
+					{
+						"key": "API-Sign",
+						"type": "text",
+						"value": "{{api_signature}}"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nonce",
+							"value": "{{api_nonce}}",
+							"type": "text"
+						},
+						{
+							"key": "asset",
+							"value": "xdg",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.kraken.com/0/private/TradeBalance",
+					"protocol": "https",
+					"host": [
+						"api",
+						"kraken",
+						"com"
+					],
+					"path": [
+						"0",
+						"private",
+						"TradeBalance"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OpenOrders",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "e11ed019-722d-4ecf-8ddf-1f724e5b1ab4",
+						"exec": [
+							"api_key = \"Nosz8dniQf/O2Nb9eX86ZMRGnjnmlG0M4VOReJE7wP8CPq7AmD8SycH1\";",
+							"api_secret = CryptoJS.enc.Base64.parse(\"WomYIF1MoPo1K7yMIGzTyEPb9LZk+aB84TXKrUNbQzWkxgJF0DCRceYL+ijxW30izLmXIsFd10d/SR2HQMB57Q==\");",
+							"api_nonce = (Date.now() * 1000).toString();",
+							"api_endpoint = \"/0/private/OpenOrders\";",
+							"api_post = \"nonce=\" + api_nonce;",
+							"",
+							"api_sha256 = CryptoJS.SHA256(api_nonce + api_post);",
+							"api_sign = CryptoJS.algo.HMAC.create(CryptoJS.algo.SHA512, api_secret);",
+							"api_sign.update(api_endpoint, api_secret);",
+							"api_sign.update(api_sha256, api_secret);",
+							"api_sign = api_sign.finalize().toString(CryptoJS.enc.Base64);",
+							"",
+							"pm.globals.set(\"api_nonce\", api_nonce);",
+							"pm.globals.set(\"api_key\", api_key);",
+							"pm.globals.set(\"api_signature\", api_sign);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "API-Key",
+						"type": "text",
+						"value": "{{api_key}}"
+					},
+					{
+						"key": "API-Sign",
+						"type": "text",
+						"value": "{{api_signature}}"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nonce",
+							"value": "{{api_nonce}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.kraken.com/0/private/OpenOrders",
+					"protocol": "https",
+					"host": [
+						"api",
+						"kraken",
+						"com"
+					],
+					"path": [
+						"0",
+						"private",
+						"OpenOrders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddOrder",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "e11ed019-722d-4ecf-8ddf-1f724e5b1ab4",
+						"exec": [
+							"api_key = \"Nosz8dniQf/O2Nb9eX86ZMRGnjnmlG0M4VOReJE7wP8CPq7AmD8SycH1\";",
+							"api_secret = CryptoJS.enc.Base64.parse(\"WomYIF1MoPo1K7yMIGzTyEPb9LZk+aB84TXKrUNbQzWkxgJF0DCRceYL+ijxW30izLmXIsFd10d/SR2HQMB57Q==\");",
+							"api_nonce = (Date.now() * 1000).toString();",
+							"api_endpoint = \"/0/private/AddOrder\";",
+							"api_post = \"nonce=\" + api_nonce + \"&pair=xdgusd&type=buy&ordertype=limit&price=0.0015&volume=6000&userref=97595274\";",
+							"",
+							"api_sha256 = CryptoJS.SHA256(api_nonce + api_post);",
+							"api_sign = CryptoJS.algo.HMAC.create(CryptoJS.algo.SHA512, api_secret);",
+							"api_sign.update(api_endpoint, api_secret);",
+							"api_sign.update(api_sha256, api_secret);",
+							"api_sign = api_sign.finalize().toString(CryptoJS.enc.Base64);",
+							"",
+							"pm.globals.set(\"api_nonce\", api_nonce);",
+							"pm.globals.set(\"api_key\", api_key);",
+							"pm.globals.set(\"api_signature\", api_sign);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "API-Key",
+						"type": "text",
+						"value": "{{api_key}}"
+					},
+					{
+						"key": "API-Sign",
+						"type": "text",
+						"value": "{{api_signature}}"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nonce",
+							"value": "{{api_nonce}}",
+							"type": "text"
+						},
+						{
+							"key": "pair",
+							"value": "xdgusd",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "buy",
+							"type": "text"
+						},
+						{
+							"key": "ordertype",
+							"value": "limit",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "0.0015",
+							"type": "text"
+						},
+						{
+							"key": "volume",
+							"value": "6000",
+							"type": "text"
+						},
+						{
+							"key": "userref",
+							"value": "97595274",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.kraken.com/0/private/AddOrder",
+					"protocol": "https",
+					"host": [
+						"api",
+						"kraken",
+						"com"
+					],
+					"path": [
+						"0",
+						"private",
+						"AddOrder"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CancelOrder",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "e11ed019-722d-4ecf-8ddf-1f724e5b1ab4",
+						"exec": [
+							"api_key = \"Nosz8dniQf/O2Nb9eX86ZMRGnjnmlG0M4VOReJE7wP8CPq7AmD8SycH1\";",
+							"api_secret = CryptoJS.enc.Base64.parse(\"WomYIF1MoPo1K7yMIGzTyEPb9LZk+aB84TXKrUNbQzWkxgJF0DCRceYL+ijxW30izLmXIsFd10d/SR2HQMB57Q==\");",
+							"api_nonce = (Date.now() * 1000).toString();",
+							"api_endpoint = \"/0/private/CancelOrder\";",
+							"api_post = \"nonce=\" + api_nonce + \"&txid=97595274\";",
+							"",
+							"api_sha256 = CryptoJS.SHA256(api_nonce + api_post);",
+							"api_sign = CryptoJS.algo.HMAC.create(CryptoJS.algo.SHA512, api_secret);",
+							"api_sign.update(api_endpoint, api_secret);",
+							"api_sign.update(api_sha256, api_secret);",
+							"api_sign = api_sign.finalize().toString(CryptoJS.enc.Base64);",
+							"",
+							"pm.globals.set(\"api_nonce\", api_nonce);",
+							"pm.globals.set(\"api_key\", api_key);",
+							"pm.globals.set(\"api_signature\", api_sign);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "API-Key",
+						"type": "text",
+						"value": "{{api_key}}"
+					},
+					{
+						"key": "API-Sign",
+						"type": "text",
+						"value": "{{api_signature}}"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nonce",
+							"value": "{{api_nonce}}",
+							"type": "text"
+						},
+						{
+							"key": "txid",
+							"value": "97595274",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.kraken.com/0/private/CancelOrder",
+					"protocol": "https",
+					"host": [
+						"api",
+						"kraken",
+						"com"
+					],
+					"path": [
+						"0",
+						"private",
+						"CancelOrder"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
