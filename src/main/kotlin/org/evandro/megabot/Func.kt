@@ -23,6 +23,7 @@ fun secondsToDate(seconds: Long): String {
     val sdf = SimpleDateFormat("d/MM/yyyy HH:mm:ss")
     return sdf.format(date)
 }
+
 fun profitPerc(start: Double, end: Double): String {
     return "${round2(profit(start, end) * 100.0)}%"
 }
@@ -38,4 +39,17 @@ fun profit(start: Double, end: Double): Double {
     return (end - start) / start
 }
 
-fun Double.formatUS(digits: Int) = "%.${digits}f".format(this).replace(",",".")
+fun Double.formatUS(digits: Int) = "%.${digits}f".format(this).replace(",", ".")
+
+fun movingAverage(points: Int, candles: List<Candle>, position: Int): Pair<Double, Boolean> {
+
+    if (points - 1 > position || position - 1 > candles.size) {
+        return Pair(Double.NaN, false)
+    }
+    var sum = 0.0
+    for (i in 1..points) {
+        val index = position - points
+        sum+=candles[index].value
+    }
+    return Pair(sum / points.toDouble(), true)
+}

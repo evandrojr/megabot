@@ -1,7 +1,7 @@
 package org.evandro.megabot
 
 interface Strategy {
-    var executer: Executer?
+    var engine: Engine?
     fun trade() : Boolean
     override fun toString(): String
 }

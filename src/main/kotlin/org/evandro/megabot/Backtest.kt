@@ -1,6 +1,6 @@
 package org.evandro.megabot
 
-class Backtest : Executer{
+class Backtest : Engine{
 
     val startFiatAmount =  4411.0
     val startCryptoAmount = 1.0

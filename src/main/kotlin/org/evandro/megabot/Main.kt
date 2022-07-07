@@ -17,7 +17,7 @@ fun tradeBot(){
     println("Hello Megabot!")
     val bot = Bot()
     val strategy = BuyCheapSellExpensiveStrategy(0.05, 0.2)
-    strategy.executer = bot
+    strategy.engine = bot
     bot.initialize(strategy)
     bot.trade()
 }
@@ -34,7 +34,7 @@ fun backtestSingleRun() {
     val backtest = Backtest()
     backtest.strategy = buyCheapSellExpensiveStrategy
     backtest.candles = candles
-    buyCheapSellExpensiveStrategy.executer = backtest
+    buyCheapSellExpensiveStrategy.engine = backtest
     backtest.setPeriod("2022-06-01", "2022-06-22")
     backtest.setup()
     backtest.trade()

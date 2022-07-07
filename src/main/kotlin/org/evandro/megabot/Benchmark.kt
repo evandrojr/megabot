@@ -36,7 +36,7 @@ class Benchmark {
                         BuyCheapSellExpensiveStrategy(profitToSell.toDouble() / 100.0, profitToBuy.toDouble() / 100)
                     backtest.strategy = buyCheapSellExpensiveStrategy
                     backtest.candles = candles
-                    buyCheapSellExpensiveStrategy.executer = backtest
+                    buyCheapSellExpensiveStrategy.engine = backtest
 //                    backtest.setPeriodAllAvailable()
                     backtest.setPeriod("2017-08-17", "2022-07-05")
                     backtest.setup()
@@ -70,7 +70,7 @@ class Benchmark {
     fun stats() {
         winnerBacktest.strategy = winnerStrategy
         winnerBacktest.candles = candles
-        winnerStrategy.executer = winnerBacktest
+        winnerStrategy.engine = winnerBacktest
         winnerBacktest.setup()
         winnerBacktest.trade()
         winnerBacktest.pInitial()

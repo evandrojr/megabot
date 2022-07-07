@@ -11,7 +11,7 @@ class CsvToCandles {
         val candles: MutableList<Candle> = ArrayList();
 
         for (row in rows) {
-            val candle = Candle(row.get("date")!!.toString(), row.get("open")!!.toDouble())
+            val candle = Candle(row.get("date")!!.toString(), row.get("close")!!.toDouble())
             candles.add(candle)
         }
         return candles

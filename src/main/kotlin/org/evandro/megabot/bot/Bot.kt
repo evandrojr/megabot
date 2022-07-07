@@ -3,7 +3,7 @@ package org.evandro.megabot.bot
 import com.jayway.jsonpath.DocumentContext
 import com.jayway.jsonpath.JsonPath
 import net.minidev.json.JSONArray
-import org.evandro.megabot.Executer
+import org.evandro.megabot.Engine
 import org.evandro.megabot.Log
 import org.evandro.megabot.Strategy
 import org.evandro.megabot.bot.api.KrakenApi
@@ -19,7 +19,7 @@ import java.io.File
 //lowest price at which a seller will sell the stock.
 //The bid price will almost always be lower than the ask or “offer,” price.
 
-class Bot : Executer {
+class Bot : Engine {
 
     val api = KrakenApi()
     var strategy: Strategy? = null

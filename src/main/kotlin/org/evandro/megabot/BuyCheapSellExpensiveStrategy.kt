@@ -2,27 +2,27 @@ package org.evandro.megabot
 
 class BuyCheapSellExpensiveStrategy(val profitToSell: Double, val profitToBuy: Double) : Strategy {
 
-    override var executer : Executer? =  null
+    override var engine : Engine? =  null
 
 
     override fun trade() : Boolean {
         if (shouldSell()) {
-            executer!!.sellAll()
+            engine!!.sellAll()
             return true
         }
 
         if (shouldBuy()) {
-            executer!!.buyAll()
+            engine!!.buyAll()
             return true
         }
         return false
     }
 
     fun shouldBuy(): Boolean {
-        if (executer!!.fiatAmount <= 0.0) {
+        if (engine!!.fiatAmount <= 0.0) {
             return false
         }
-        return shouldBuy(executer!!.soldAtPrice, executer!!.cryptoBuyPrice, profitToBuy)
+        return shouldBuy(engine!!.soldAtPrice, engine!!.cryptoBuyPrice, profitToBuy)
     }
 
     fun shouldBuy(soldAtPrice: Double, cryptoPrice: Double, profitToBuy: Double): Boolean {
@@ -30,10 +30,10 @@ class BuyCheapSellExpensiveStrategy(val profitToSell: Double, val profitToBuy: D
     }
 
     fun shouldSell(): Boolean {
-        if (executer!!.cryptoAmount <= 0.0) {
+        if (engine!!.cryptoAmount <= 0.0) {
             return false
         }
-        return shouldSell(executer!!.boughtAtPrice, executer!!.cryptoSellPrice, profitToSell)
+        return shouldSell(engine!!.boughtAtPrice, engine!!.cryptoSellPrice, profitToSell)
     }
 
     fun shouldSell(boughtAtPrice: Double, cryptoPrice: Double, profitToSell: Double): Boolean {
@@ -41,7 +41,7 @@ class BuyCheapSellExpensiveStrategy(val profitToSell: Double, val profitToBuy: D
     }
 
     override fun toString(): String {
-        return "BuyCheapSellExpensiveStrategy(profitToSell=$profitToSell, profitToBuy=$profitToBuy, trade=$executer)"
+        return "BuyCheapSellExpensiveStrategy(profitToSell=$profitToSell, profitToBuy=$profitToBuy, trade=$engine)"
     }
 
 }

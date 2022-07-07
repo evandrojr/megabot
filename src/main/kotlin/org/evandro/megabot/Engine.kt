@@ -1,8 +1,9 @@
 package org.evandro.megabot
 
-interface Executer {
+interface Engine {
     fun sellAll()
     fun buyAll()
+    val candles: List<Candle>
     var fiatAmount : Double
     var cryptoAmount : Double
     var soldAtPrice: Double
