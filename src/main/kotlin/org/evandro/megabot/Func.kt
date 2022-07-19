@@ -48,7 +48,7 @@ fun movingAverage(points: Int, candles: List<Candle>, position: Int): Pair<Doubl
     }
     var sum = 0.0
     for (i in 1..points) {
-        val index = position - points
+        val index = position - i
         sum+=candles[index].value
     }
     return Pair(sum / points.toDouble(), true)

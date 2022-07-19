@@ -3,6 +3,7 @@ package org.evandro.megabot
 interface Engine {
     fun sellAll()
     fun buyAll()
+    val candleIndex: Int
     val candles: List<Candle>
     var fiatAmount : Double
     var cryptoAmount : Double

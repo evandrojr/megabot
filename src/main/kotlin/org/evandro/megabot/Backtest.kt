@@ -6,14 +6,14 @@ class Backtest : Engine{
     val startCryptoAmount = 1.0
 
     var strategy: Strategy? = null
-    var candles: List<Candle> = ArrayList()
     val secondsInADay = 86400.0
     var startCandleIndex = 0
     var endCandleIndex = 0
     override var fiatAmount = startFiatAmount
     override var cryptoAmount = startCryptoAmount
     var time = ""
-    var candleIndex = startCandleIndex
+    override var candles: List<Candle> = ArrayList()
+    override var candleIndex = startCandleIndex
     override var boughtAtPrice = -1.0
     override var soldAtPrice = -1.0
     override var cryptoSellPrice = Double.MAX_VALUE

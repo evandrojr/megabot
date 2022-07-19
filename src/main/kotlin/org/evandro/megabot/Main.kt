@@ -4,11 +4,11 @@ import org.evandro.megabot.bot.Bot
 
 
 fun main(args: Array<String>) {
-    val mode = 2
+    val mode = 3
     val modeChoice = when(mode){
         1-> tradeBot()
         2-> benchmarkBacktests()
-        3-> backtestSingleRun()
+        3-> backtestSingleRunBuyScalping()
         else -> println("Invalid mode")
     }
 }
@@ -27,7 +27,23 @@ fun benchmarkBacktests() {
     Benchmark().start()
 }
 
-fun backtestSingleRun() {
+
+fun backtestSingleRunBuyScalping() {
+    println("Starting single backtest")
+    val candles = CsvToCandles().readAll()
+    val scalpingStrategy = ScalpingStrategy()
+    val backtest = Backtest()
+    backtest.strategy = scalpingStrategy
+    backtest.candles = candles
+    scalpingStrategy.engine = backtest
+    backtest.setPeriod("2022-01-01", "2022-06-22")
+    backtest.setup()
+    backtest.trade()
+    backtest.pInitial()
+    backtest.stats()
+}
+
+fun backtestSingleRunBuyCheapSellExpensiveStrategy() {
     println("Starting single backtest")
     val candles = CsvToCandles().readAll()
     val buyCheapSellExpensiveStrategy = BuyCheapSellExpensiveStrategy(0.01, 0.08)

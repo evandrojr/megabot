@@ -3,11 +3,8 @@ package org.evandro.megabot.bot
 import com.jayway.jsonpath.DocumentContext
 import com.jayway.jsonpath.JsonPath
 import net.minidev.json.JSONArray
-import org.evandro.megabot.Engine
-import org.evandro.megabot.Log
-import org.evandro.megabot.Strategy
+import org.evandro.megabot.*
 import org.evandro.megabot.bot.api.KrakenApi
-import org.evandro.megabot.formatUS
 import java.io.File
 
 
@@ -32,7 +29,8 @@ class Bot : Engine {
     override var boughtAtPrice: Double = 0.0
     override var cryptoSellPrice: Double = Double.MAX_VALUE
     override var cryptoBuyPrice: Double = Double.MAX_VALUE
-
+    override var candles: List<Candle> = ArrayList()
+    override var candleIndex = 0
 
     var tradesExecutionCount = 0
 
